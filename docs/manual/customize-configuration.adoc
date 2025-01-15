@@ -13,6 +13,12 @@ called +defconfig+. If you want to save it in another place, change the
 +BR2_DEFCONFIG+ option in the Buildroot configuration itself, or call
 make with +make savedefconfig BR2_DEFCONFIG=<path-to-defconfig>+.
 
+NOTE: A few of the files in +configs+ set +BR2_DEFCONFIG+. This causes
++make <boardname>_defconfig+ followed by +make savedefconfig+ to
+overwrite the original +configs/<boardname>_defconfig+ instead of
+writing +defconfig+. To prevent this, either unset +BR2_DEFCONFIG+ in
+your `.config`, or run +make savedefconfig BR2_DEFCONFIG=defconfig+.
+
 The recommended place to store this defconfig is
 +configs/<boardname>_defconfig+. If you follow this recommendation, the
 configuration will be listed in +make list-defconfigs+ and can be set
